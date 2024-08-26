@@ -13,6 +13,22 @@
 
 ## Setup
 
+### React (with Next.js)
+
+Install dependencies:
+```
+npm i -D eslint @lissone/eslint-config
+```
+Inside `.eslintrc.json`
+```
+{
+  "extends": [
+    "@lissone/eslint-config/next", 
+    "next/core-web-vitals"
+  ]
+}
+```
+
 ### React
 
 Install dependencies:
