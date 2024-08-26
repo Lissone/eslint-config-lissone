@@ -2,31 +2,18 @@
 
 ## Whats included?
 
-- Standard config base;
+- Comments plugin;
+- Import plugin;
 - React plugin;
 - React Hooks plugin;
+- Security plugin;
+- Stylistic plugin;
 - JSX a11y plugin;
-- Prettier;
+- Unicorn plugin;
 
 ## Setup
 
-### React (with Next.js)
-
-Install dependencies:
-```
-npm i -D eslint @lissone/eslint-config
-```
-Inside `.eslintrc.json`
-```
-{
-  "extends": [
-    "@lissone/eslint-config/next", 
-    "next/core-web-vitals"
-  ]
-}
-```
-
-### React (without Next.js)
+### React
 
 Install dependencies:
 ```
