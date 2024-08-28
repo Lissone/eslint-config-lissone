@@ -1,12 +1,11 @@
 module.exports = {
   env: {
     browser: true,
-    'shared-node-browser': true
+    es2021: true,
+    jest: true,
   },
   extends: [
     'eslint:recommended',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:@typescript-eslint/recommended-requiring-type-checking',
     'plugin:eslint-comments/recommended',
     'plugin:import/recommended',
     'plugin:promise/recommended',
@@ -14,6 +13,14 @@ module.exports = {
     'plugin:unicorn/recommended',
     'plugin:jsx-a11y/recommended'
   ],
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true
+    },
+    ecmaVersion: 'latest',
+    sourceType: 'module'
+  },
   plugins: [
     '@typescript-eslint',
     '@stylistic',
@@ -39,20 +46,6 @@ module.exports = {
       ignoreMemberSort: false,
       allowSeparatedGroups: true
     }],
-
-    '@typescript-eslint/default-param-last': 'off',
-    '@typescript-eslint/explicit-module-boundary-types': 'off',
-    '@typescript-eslint/naming-convention': ['error', {
-      selector: 'variable',
-      format: ['camelCase', 'PascalCase', 'snake_case', 'UPPER_CASE']
-    }],
-    '@typescript-eslint/no-explicit-any': 'off',
-    '@typescript-eslint/no-misused-promises': 'off',
-    '@typescript-eslint/no-unnecessary-type-assertion': 'off',
-    '@typescript-eslint/no-unsafe-assignment': 'off',
-    '@typescript-eslint/no-use-before-define': 'off',
-    '@typescript-eslint/restrict-template-expressions': 'off',
-    '@typescript-eslint/return-await': 'off',
 
     'react/no-unknown-property': 'error',
     'react/self-closing-comp': 'error',
@@ -117,21 +110,39 @@ module.exports = {
     'jsx-a11y/role-has-required-aria-props': 'warn',
     'jsx-a11y/role-supports-aria-props': 'warn',
   },
-  parser: '@typescript-eslint/parser',
-  parserOptions: {
-    ecmaFeatures: {
-      jsx: true
-    },
-    ecmaVersion: 'latest',
-    sourceType: 'module'
-  },
+  overrides: [
+    {
+      files: ['*.ts', '*.tsx', '*.d.ts'],
+      extends: [
+        'plugin:@typescript-eslint/recommended',
+        'plugin:@typescript-eslint/recommended-requiring-type-checking',
+      ],
+      rules: {
+        '@typescript-eslint/default-param-last': 'off',
+        '@typescript-eslint/explicit-module-boundary-types': 'off',
+        '@typescript-eslint/naming-convention': ['error', {
+          selector: 'variable',
+          format: ['camelCase', 'PascalCase', 'snake_case', 'UPPER_CASE']
+        }],
+        '@typescript-eslint/no-explicit-any': 'off',
+        '@typescript-eslint/no-misused-promises': 'off',
+        '@typescript-eslint/no-unnecessary-type-assertion': 'off',
+        '@typescript-eslint/no-unsafe-assignment': 'off',
+        '@typescript-eslint/no-use-before-define': 'off',
+        '@typescript-eslint/restrict-template-expressions': 'off',
+        '@typescript-eslint/return-await': 'off',
+      },
+      parserOptions: {
+        project: true
+      },
+    }
+  ],
   settings: {
     react: {
       version: 'detect',
     },
     'import/parsers': {
-      [require.resolve('@typescript-eslint/parser')]: ['.ts', '.tsx', '.d.ts'],
+      [require.resolve('@typescript-eslint/parser')]: ['*.ts', '*.tsx', '*.d.ts'],
     },
-  },
-  ignorePatterns: ['node_modules']
+  }
 }
