@@ -1,6 +1,6 @@
 {
   "name": "@lissone/eslint-config",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "private": false,
   "description": "ESLint configuration used by Leonardo Lissone.",
   "author": "Leonardo Dias Lissone Santomero <leonardo.lissonez@gmail.com>",
@@ -24,6 +24,7 @@
     "@typescript-eslint/eslint-plugin": "^7.18.0",
     "@typescript-eslint/parser": "^7.18.0",
     "eslint": "^8.57.0",
+    "eslint-config-next": "^14.2.7",
     "eslint-import-resolver-alias": "^1.1.2",
     "eslint-plugin-eslint-comments": "^3.2.0",
     "eslint-plugin-import": "^2.29.1",
