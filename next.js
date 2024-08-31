@@ -67,6 +67,8 @@ module.exports = {
     'react/prop-types': 'off',
     'react/require-default-props': 'off',
 
+    "@next/next/no-img-element": "off",
+
     '@stylistic/array-bracket-spacing': ['error', 'never'],
     '@stylistic/array-bracket-newline': ['error', 'consistent'],
     '@stylistic/array-element-newline': 'off',
