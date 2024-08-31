@@ -1,9 +1,9 @@
 {
   "name": "@lissone/eslint-config",
-  "version": "2.2.2",
-  "private": false,
+  "version": "2.2.3",
   "description": "ESLint configuration used by Leonardo Lissone.",
   "author": "Leonardo Dias Lissone Santomero <leonardo.lissonez@gmail.com>",
+  "private": false,
   "main": "index.js",
   "license": "MIT",
   "repository": {
