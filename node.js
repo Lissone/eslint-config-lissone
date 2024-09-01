@@ -139,16 +139,34 @@ module.exports = {
     'import/no-unresolved': 'off',
     'import/prefer-default-export': 'off',
     'import/order': ['error', {
-      groups: ['builtin', 'external', 'internal', 'unknown', 'parent', 'sibling', 'index', 'object', 'type'],
+      groups: [
+        'builtin',
+        'external',
+        'internal',
+        'unknown',
+        ['parent', 'sibling', 'index'],
+        'type',
+        'object'
+      ],
+      pathGroups: [
+        { pattern: '@external/**', group: 'internal', position: 'after' },
+        { pattern: '@middlewares/**', group: 'internal', position: 'after' },
+        { pattern: '@controllers/**', group: 'internal', position: 'after' },
+        { pattern: '@useCases/**', group: 'internal', position: 'after' },
+        { pattern: '@repositories/**', group: 'internal', position: 'after' },
+        { pattern: '@entities/**', group: 'internal', position: 'after' },
+        { pattern: '@shared/**', group: 'internal', position: 'after' },
+        { pattern: '@interfaces/**', group: 'internal', position: 'after' }
+      ],
       alphabetize: { order: 'asc', caseInsensitive: false },
       distinctGroup: true,
       'newlines-between': 'always',
       warnOnUnassignedImports: false,
-      pathGroups: [{ pattern: '@*/**', group: 'internal', position: 'after' }],
       pathGroupsExcludedImportTypes: ['builtin']
     }],
 
     'security/detect-non-literal-fs-filename': 'off',
+    'security/detect-non-literal-regexp': 'off',
     'security/detect-object-injection': 'off',
 
     'unicorn/catch-error-name': ['error', { name: 'err' }],
@@ -190,6 +208,21 @@ module.exports = {
     }
   ],
   settings: {
+    'import/resolver': {
+      alias: {
+        map: [
+          ['@external', './src/external'],
+          ['@entities', './src/entities'],
+          ['@controllers', './src/adapters/controllers'],
+          ['@middlewares', './src/adapters/middlewares'],
+          ['@repositories', './src/adapters/repositories'],
+          ['@useCases', './src/adapters/useCases'],
+          ['@interfaces', './src/interfaces'],
+          ['@shared', './src/shared']
+        ],
+        extensions: ['.ts', '.tsx']
+      }
+    },
     'import/parsers': {
       [require.resolve('@typescript-eslint/parser')]: ['.ts', '.d.ts'],
     },
