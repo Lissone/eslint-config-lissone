@@ -197,7 +197,7 @@ module.exports = {
         { pattern: '@styles/**', group: 'object', position: 'after' },
         { pattern: '**/styles.ts', group: 'object', position: 'after' }
       ],
-      alphabetize: { 'order': 'asc', 'caseInsensitive': false },
+      alphabetize: { order: 'asc', caseInsensitive: false },
       distinctGroup: true,
       'newlines-between': 'always',
       warnOnUnassignedImports: false,
@@ -266,7 +266,7 @@ module.exports = {
     },
     'import/resolver': {
       alias: {
-        map: [ // aliases defined in tsconfig
+        map: [
           ['@assets', './src/assets'],
           ['@routes', './src/routes'],
           ['@interfaces', './src/interfaces'],
