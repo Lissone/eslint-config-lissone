@@ -1,4 +1,6 @@
-# Lissone ESLint Config
+<h1 align="center">
+  Lissone ESLint Config
+</h1>
 
 <p align="center">
   <a href="#description">Description</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
