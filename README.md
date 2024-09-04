@@ -27,20 +27,26 @@
 
 ## Description
 
-I created this ESLint configuration to keep my projects standardized, centralizing the rules and path aliases that I frequently use.
+I created this ESLint extension with the goal of keeping my projects consistently standardized and simplifying the lint configuration process across different environments. The main idea is to centralize all the rules and path aliases I frequently use, ensuring consistency and code quality, regardless of the project.
+
+I'm open to any suggestions that can contribute to the improvement of this shared ESLint configuration.
 
 ## Plugins
 
 This configuration includes the following plugins:
 
-- [ESLint Comments](https://github.com/mysticatea/eslint-plugin-eslint-comments)
+- [Typescript](https://github.com/typescript-eslint/typescript-eslint)
+- [Stylistic](https://github.com/eslint-community/eslint-plugin-stylistic)
+- [Unicorn](https://github.com/sindresorhus/eslint-plugin-unicorn)
+- [Promise](https://github.com/eslint-community/eslint-plugin-promise)
 - [Import](https://github.com/import-js/eslint-plugin-import)
+- [Import Resolver Alias](https://github.com/johvin/eslint-import-resolver-alias)
+- [Security](https://github.com/nodesecurity/eslint-plugin-security)
+- [ESLint Comments](https://github.com/mysticatea/eslint-plugin-eslint-comments)
 - [React](https://github.com/jsx-eslint/eslint-plugin-react)
 - [React Hooks](https://github.com/facebook/react/tree/main/packages/eslint-plugin-react-hooks)
-- [Security](https://github.com/nodesecurity/eslint-plugin-security)
-- [Stylistic](https://github.com/eslint-community/eslint-plugin-stylistic)
+- [Next](https://github.com/vercel/next.js)
 - [JSX a11y](https://github.com/jsx-eslint/eslint-plugin-jsx-a11y)
-- [Unicorn](https://github.com/sindresorhus/eslint-plugin-unicorn)
 
 ## Setup
 
@@ -105,7 +111,7 @@ To configure import paths using this configuration, add the following to your `.
       "alias": {
         "map": [
           ["@", "./src"],
-          ["~", "./"]
+          ["@shared", "./src/shared"]
         ],
         "extensions": [".js", ".jsx", ".ts", ".tsx"]
       }
@@ -119,17 +125,30 @@ If your project uses TypeScript, make sure to add these aliases to your `tsconfi
 ```json
 {
   "compilerOptions": {
+    "baseUrl": "./src",
     "paths": {
-      "@/*": ["src/*"],
-      "~/*": ["./*"]
+      "@/*": ["./*"],
+      "@shared/*": ["shared/*"]
     }
+  }
+}
+```
+
+### Overriding Rules
+
+You can override any rule specified in the base configuration. For example, to change the `no-console` rule, add the following to your `.eslintrc`:
+
+```json
+{
+  "rules": {
+    "no-console": "warn"
   }
 }
 ```
 
 ## Version
 
-This configuration requires ESLint version 8.57.0.
+This configuration requires ESLint version **8.57.0**. If your project uses TypeScript, it is recommended to use a version above **5.0.0**.
 
 ## License
 
