@@ -4,35 +4,45 @@
   "description": "ESLint configuration used by Leonardo Lissone.",
   "author": "Leonardo Dias Lissone Santomero <leonardo.lissonez@gmail.com>",
   "private": false,
-  "main": "index.js",
+  "exports": {
+    "./next": "./next.js",
+    "./react": "./react.js",
+    "./node": "./node.js"
+  },
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/Lissone/eslint-config-lissone.git"
   },
   "peerDependencies": {
-    "eslint": "^8.0.0",
+    "eslint": ">=9.0.0",
+    "next": ">=15",
     "typescript": ">=5"
   },
   "peerDependenciesMeta": {
+    "next": {
+      "optional": true
+    },
     "typescript": {
       "optional": true
     }
   },
   "dependencies": {
-    "@stylistic/eslint-plugin": "^2.6.4",
-    "@typescript-eslint/eslint-plugin": "^7.18.0",
-    "@typescript-eslint/parser": "^7.18.0",
-    "eslint": "^8.57.0",
-    "eslint-config-next": "^14.2.7",
-    "eslint-import-resolver-alias": "^1.1.2",
-    "eslint-plugin-eslint-comments": "^3.2.0",
-    "eslint-plugin-import": "^2.29.1",
-    "eslint-plugin-jsx-a11y": "^6.9.0",
-    "eslint-plugin-security": "^3.0.1",
-    "eslint-plugin-promise": "^7.1.0",
-    "eslint-plugin-react": "^7.35.0",
-    "eslint-plugin-react-hooks": "^4.6.2",
-    "eslint-plugin-unicorn": "^55.0.0"
+    "@eslint-community/eslint-plugin-eslint-comments": "4.7.1",
+    "@eslint/js": "9.39.4",
+    "@stylistic/eslint-plugin": "5.10.0",
+    "@typescript-eslint/eslint-plugin": "8.58.1",
+    "@typescript-eslint/parser": "8.58.1",
+    "eslint": "9.39.4",
+    "eslint-config-next": "16.2.3",
+    "eslint-import-resolver-alias": "1.1.2",
+    "eslint-plugin-import": "2.32.0",
+    "eslint-plugin-jsx-a11y": "6.10.2",
+    "eslint-plugin-promise": "7.2.1",
+    "eslint-plugin-react": "7.37.5",
+    "eslint-plugin-react-hooks": "7.0.1",
+    "eslint-plugin-security": "4.0.0",
+    "eslint-plugin-unicorn": "64.0.0",
+    "globals": "17.4.0"
   }
 }
