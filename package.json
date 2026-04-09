@@ -1,6 +1,6 @@
 {
   "name": "@lissone/eslint-config",
-  "version": "2.2.4",
+  "version": "3.0.0",
   "description": "ESLint configuration used by Leonardo Lissone.",
   "author": "Leonardo Dias Lissone Santomero <leonardo.lissonez@gmail.com>",
   "private": false,
