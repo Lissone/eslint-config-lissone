@@ -44,13 +44,15 @@ This configuration includes the following plugins:
 - [Import](https://github.com/import-js/eslint-plugin-import)
 - [Import Resolver Alias](https://github.com/johvin/eslint-import-resolver-alias)
 - [Security](https://github.com/nodesecurity/eslint-plugin-security)
-- [ESLint Comments](https://github.com/mysticatea/eslint-plugin-eslint-comments)
+- [ESLint Comments](https://github.com/eslint-community/eslint-plugin-eslint-comments)
 - [React](https://github.com/jsx-eslint/eslint-plugin-react)
 - [React Hooks](https://github.com/facebook/react/tree/main/packages/eslint-plugin-react-hooks)
 - [Next](https://github.com/vercel/next.js)
 - [JSX a11y](https://github.com/jsx-eslint/eslint-plugin-jsx-a11y)
 
 ## Setup
+
+This package uses ESLint's **flat config** format (ESLint 9+). Create an `eslint.config.js` file at the root of your project.
 
 ### React (with Next.js)
 
@@ -60,12 +62,12 @@ Install dependencies:
 npm i -D eslint @lissone/eslint-config
 ```
 
-Inside `.eslintrc`:
+Inside `eslint.config.js`:
 
-```json
-{
-  "extends": "@lissone/eslint-config/next"
-}
+```js
+const nextConfig = require('@lissone/eslint-config/next')
+
+module.exports = [...nextConfig]
 ```
 
 ### React
@@ -76,12 +78,12 @@ Install dependencies:
 npm i -D eslint @lissone/eslint-config
 ```
 
-Inside `.eslintrc`:
+Inside `eslint.config.js`:
 
-```json
-{
-  "extends": "@lissone/eslint-config/react"
-}
+```js
+const reactConfig = require('@lissone/eslint-config/react')
+
+module.exports = [...reactConfig]
 ```
 
 ### Node.js
@@ -92,34 +94,39 @@ Install dependencies:
 npm i -D eslint @lissone/eslint-config
 ```
 
-Inside `.eslintrc`:
+Inside `eslint.config.js`:
 
-```json
-{
-  "extends": "@lissone/eslint-config/node"
-}
+```js
+const nodeConfig = require('@lissone/eslint-config/node')
+
+module.exports = [...nodeConfig]
 ```
 
 ## Configuration
 
 ### Import Paths
 
-To configure import paths using this configuration, add the following to your `.eslintrc`:
+The default path aliases are already configured inside each config. To override or extend them, add a new config object to your `eslint.config.js`:
 
-```json
-{
-  "settings": {
-    "import/resolver": {
-      "alias": {
-        "map": [
-          ["@", "./src"],
-          ["@shared", "./src/shared"]
-        ],
-        "extensions": [".js", ".jsx", ".ts", ".tsx"]
-      }
-    }
-  }
-}
+```js
+const reactConfig = require('@lissone/eslint-config/react')
+
+module.exports = [
+  ...reactConfig,
+  {
+    settings: {
+      'import/resolver': {
+        alias: {
+          map: [
+            ['@', './src'],
+            ['@shared', './src/shared'],
+          ],
+          extensions: ['.js', '.jsx', '.ts', '.tsx'],
+        },
+      },
+    },
+  },
+]
 ```
 
 If your project uses TypeScript, make sure to add these aliases to your `tsconfig.json` as well:
@@ -138,19 +145,24 @@ If your project uses TypeScript, make sure to add these aliases to your `tsconfi
 
 ### Overriding Rules
 
-You can override any rule specified in the base configuration. For example, to change the `no-console` rule, add the following to your `.eslintrc`:
+You can override any rule by appending a config object at the end of the array:
 
-```json
-{
-  "rules": {
-    "no-console": "warn"
-  }
-}
+```js
+const reactConfig = require('@lissone/eslint-config/react')
+
+module.exports = [
+  ...reactConfig,
+  {
+    rules: {
+      'no-console': 'warn',
+    },
+  },
+]
 ```
 
 ## Version
 
-This configuration requires ESLint version **8.57.0**. If your project uses TypeScript, it is recommended to use a version above **5.0.0**.
+This configuration requires ESLint version **9.0.0** or higher. If your project uses TypeScript, it is recommended to use version **5.0.0** or higher.
 
 ## License
 
